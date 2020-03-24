@@ -10,7 +10,10 @@ file_manager.write(signal, "signal2.pickle")
 
 read_signal = file_manager.read("signal2.pickle")
 
+print("elo")
 print(read_signal.average_signal_value())
+
+
 
 
 # freq = 50

@@ -1,5 +1,5 @@
 from signal_type import SignalType
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import numpy as np
 
 
@@ -12,14 +12,14 @@ class Signal:
         self.samples = samples
         self.signal_frequency = signal_frequency
 
-    def display(self):
-        fig1 = plt.figure(figsize=(10, 4))
-        axes1 = fig1.add_axes([0.1, 0.1, 0.8, 0.8])
-        period = 1 / self.sampling_frequency
-        stop_time = self.start_time + (period * (len(self.samples)))
-        axes1.plot(np.arange(self.start_time, stop_time, period), self.samples, color='red', linewidth=3,
-                   linestyle='-')
-        plt.show()
+    # def display(self):
+    #     fig1 = plt.figure(figsize=(10, 4))
+    #     axes1 = fig1.add_axes([0.1, 0.1, 0.8, 0.8])
+    #     period = 1 / self.sampling_frequency
+    #     stop_time = self.start_time + (period * (len(self.samples)))
+    #     axes1.plot(np.arange(self.start_time, stop_time, period), self.samples, color='red', linewidth=3,
+    #                linestyle='-')
+    #     plt.show()
 
     def get_number_of_samples_in_one_period(self):
         signal_period = 1 / self.signal_frequency
@@ -31,6 +31,7 @@ class Signal:
         sum = 0.0
         while i < stop_index:
             sum += self.samples[i]
+            i += 1
         return sum
 
     def average_signal_value(self):
