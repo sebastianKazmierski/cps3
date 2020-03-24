@@ -28,7 +28,7 @@ class Signal:
         if self.signal_periodic == PeriodicalSignal.YES:
             signal_period = 1 / self.signal_frequency
             sampling_period = 1 / self.sampling_frequency
-            return round((signal_period / sampling_period) * self.sampling_frequency)
+            return round((signal_period / sampling_period))
         return len(self.samples)
 
     def sum_of_samples(self, start_index: int, stop_index: int):

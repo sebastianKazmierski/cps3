@@ -12,4 +12,4 @@ class SignalGenerator:
 
     def get_arguments(self, start_time, duration, sampling_frequency):
         ts = 1 / sampling_frequency
-        return np.arange(0, (start_time + duration + ts / 2), ts)
+        return np.arange(start_time, (start_time + duration + ts / 2), ts)

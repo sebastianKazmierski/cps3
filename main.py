@@ -5,6 +5,8 @@ from signal_generators2.noise_uniform_distribution import UniformDistribution
 import matplotlib.pyplot as plt
 from signal_generators2.sin import SinGenerator
 import numpy as np
+
+from signal_generators2.sin_straightened_in_one_half import SinStraightenedInOneHalf
 from signal_type import SignalType
 
 
@@ -35,8 +37,9 @@ read_signal = file_manager.read("signal2.pickle")
 
 uniform = UniformDistribution()
 gaus = GausDistribution()
+SinOneHalf = SinStraightenedInOneHalf()
 
-signalUniform = uniform.generate(1, 1, 10, 3, 0, 50)
+signalUniform = SinOneHalf.generate(1, 1, 10, 3, 0, 100)
 
 print("elo")
 show_statistics(signalUniform)
