@@ -3,6 +3,7 @@ from signal_type import SignalType
 import numpy as np
 
 
+
 class Signal:
     def __init__(self, start_time: float, signal_frequency: float, sampling_frequency: float, signal_type: SignalType,
                  samples: list):
@@ -37,3 +38,46 @@ class Signal:
     def average_signal_value(self):
         number_of_samples = self.get_number_of_samples_in_one_period()
         return self.sum_of_samples(0, number_of_samples) / number_of_samples
+
+    def sum_of_absolute_samples(self, start_index: int, stop_index: int):
+        i = start_index
+        sum = 0.0
+        while i < stop_index:
+            sum += abs(self.samples[i])
+            i += 1
+        return sum
+
+    def absolute_average_signal_value(self):
+        number_of_samples = self.get_number_of_samples_in_one_period()
+        return self.sum_of_absolute_samples(0, number_of_samples) / number_of_samples
+
+    def sum_of_square_samples(self, start_index: int, stop_index: int):
+        i = start_index
+        sum = 0.0
+        while i < stop_index:
+            sum += (self.samples[i])**2
+            i += 1
+        return sum
+
+    def average_power_of_signal(self):
+        number_of_samples = self.get_number_of_samples_in_one_period()
+        return self.sum_of_square_samples(0, number_of_samples) / number_of_samples
+
+    def sum_of_absolute_samples_variance_average(self, start_index: int, stop_index: int):
+        i = start_index
+        average = self.average_signal_value()
+        sum = 0.0
+        while i < stop_index:
+            sum += (self.samples[i]-average)**2
+            i += 1
+        return sum
+
+    def signal_variance(self):
+        number_of_samples = self.get_number_of_samples_in_one_period()
+        return self.sum_of_absolute_samples_variance_average(0, number_of_samples) / number_of_samples
+
+    def effective_value(self):
+        return np.sqrt(self.average_power_of_signal())
+
+
+
