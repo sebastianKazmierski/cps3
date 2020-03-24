@@ -1,24 +1,46 @@
 import file_manager
-
+from signal import Signal
+from signal_generators2.noise_gaus_distribution import GausDistribution
+from signal_generators2.noise_uniform_distribution import UniformDistribution
+import matplotlib.pyplot as plt
 from signal_generators2.sin import SinGenerator
+import numpy as np
 from signal_type import SignalType
 
-test = SinGenerator(SignalType.REAL)
+
+def show_statistics(read_signal: Signal):
+    print(read_signal.average_signal_value())
+    print(read_signal.absolute_average_signal_value())
+    print(read_signal.average_power_of_signal())
+    print(read_signal.signal_variance())
+    print(read_signal.effective_value())
+
+
+def display(signal: Signal):
+    fig1 = plt.figure(figsize=(10, 4))
+    axes1 = fig1.add_axes([0.1, 0.1, 0.8, 0.8])
+    period = 1 / signal.sampling_frequency
+    stop_time = signal.start_time + (period * (len(signal.samples)))
+    axes1.plot(np.arange(signal.start_time, stop_time, period), signal.samples, color='red', linewidth=3,
+               linestyle='-')
+    plt.show()
+
+
+test = SinGenerator()
 signal = test.generate(1, 1, 10, 2, 0, 5)
 
 file_manager.write(signal, "signal2.pickle")
 
 read_signal = file_manager.read("signal2.pickle")
 
+uniform = UniformDistribution()
+gaus = GausDistribution()
+
+signalUniform = uniform.generate(1, 1, 10, 3, 0, 50)
+
 print("elo")
-print(read_signal.average_signal_value())
-print(read_signal.absolute_average_signal_value())
-print(read_signal.average_power_of_signal())
-print(read_signal.signal_variance())
-print(read_signal.effective_value())
-
-
-
+show_statistics(signalUniform)
+display(signalUniform)
 
 # freq = 50
 # time_period = 1/freq
@@ -40,10 +62,13 @@ print(read_signal.effective_value())
 # xs = x[xts]
 # ys = yc[xts]
 #
-# fig1=plt.figure(figsize=(10,4))
-# axes1=fig1.add_axes([0.1,0.1,0.8,0.8])
-#
-# axes1.plot(x,yc,color='red', linewidth=3, linestyle='-')
+# fig1 = plt.figure(figsize=(10, 4))
+# axes1 = fig1.add_axes([0.1, 0.1, 0.8, 0.8])
+# #
+# axes1.plot(x, yc, color='red', linewidth=3, linestyle='-')
+# plt.show()
+
+
 #
 # axes1.set_ylim([-3,3])
 # axes1.set_xlim([0,np.max(x)])
