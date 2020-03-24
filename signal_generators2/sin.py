@@ -5,6 +5,8 @@ import numpy as np
 import math
 import matplotlib.pyplot as plt
 
+from type_of_periodical import PeriodicalSignal
+
 
 class SinGenerator(SignalGenerator):
     def __init__(self, signal_type: SignalType):
@@ -17,6 +19,6 @@ class SinGenerator(SignalGenerator):
 
         y = amplitude * np.sin(((2 * math.pi) / period) * (txs - start_time))
 
-        return Signal(start_time, 1/period, sampling_frequency, SignalType.REAL, y)
+        return Signal(start_time, 1/period, sampling_frequency, y, SignalType.REAL, PeriodicalSignal.YES)
 
 

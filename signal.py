@@ -2,16 +2,18 @@ from signal_type import SignalType
 # import matplotlib.pyplot as plt
 import numpy as np
 
+from type_of_periodical import PeriodicalSignal
 
 
 class Signal:
-    def __init__(self, start_time: float, signal_frequency: float, sampling_frequency: float, signal_type: SignalType,
-                 samples: list):
+    def __init__(self, start_time: float, signal_frequency: float, sampling_frequency: float, samples: list,
+                 signal_type: SignalType, signal_periodic: PeriodicalSignal):
         self.start_time = start_time
         self.sampling_frequency = sampling_frequency
         self.signal_type = signal_type
         self.samples = samples
         self.signal_frequency = signal_frequency
+        self.signal_periodic = signal_periodic
 
     # def display(self):
     #     fig1 = plt.figure(figsize=(10, 4))
@@ -23,9 +25,11 @@ class Signal:
     #     plt.show()
 
     def get_number_of_samples_in_one_period(self):
-        signal_period = 1 / self.signal_frequency
-        sampling_period = 1 / self.sampling_frequency
-        return round((signal_period / sampling_period) * self.sampling_frequency)
+        if self.signal_periodic == PeriodicalSignal.YES:
+            signal_period = 1 / self.signal_frequency
+            sampling_period = 1 / self.sampling_frequency
+            return round((signal_period / sampling_period) * self.sampling_frequency)
+        return len(self.samples)
 
     def sum_of_samples(self, start_index: int, stop_index: int):
         i = start_index
@@ -55,7 +59,7 @@ class Signal:
         i = start_index
         sum = 0.0
         while i < stop_index:
-            sum += (self.samples[i])**2
+            sum += (self.samples[i]) ** 2
             i += 1
         return sum
 
@@ -68,7 +72,7 @@ class Signal:
         average = self.average_signal_value()
         sum = 0.0
         while i < stop_index:
-            sum += (self.samples[i]-average)**2
+            sum += (self.samples[i] - average) ** 2
             i += 1
         return sum
 
@@ -78,6 +82,3 @@ class Signal:
 
     def effective_value(self):
         return np.sqrt(self.average_power_of_signal())
-
-
-
