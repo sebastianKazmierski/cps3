@@ -3,6 +3,9 @@ from signal import Signal
 from signal_generators2.noise_gaus_distribution import GausDistribution
 from signal_generators2.noise_uniform_distribution import UniformDistribution
 import matplotlib.pyplot as plt
+
+from signal_generators2.rectagular_simetric_signal import RectangularSymetricSignal
+from signal_generators2.rectangular_signal import RectangularSignal
 from signal_generators2.sin import SinGenerator
 import numpy as np
 
@@ -40,8 +43,10 @@ uniform = UniformDistribution()
 gaus = GausDistribution()
 SinOneHalf = SinStraightenedInOneHalf()
 sinThoHalf = SinStraightenedInTwoHalf()
+rectangularSignal = RectangularSignal()
+rectangularSymetricSignal = RectangularSymetricSignal()
 
-signalUniform = sinThoHalf.generate(1, 1, 10, 3, 0, 100)
+signalUniform = rectangularSymetricSignal.generate(1, 1, 10, 3, 0.7, 100)
 
 print("elo")
 show_statistics(signalUniform)
