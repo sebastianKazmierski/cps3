@@ -10,6 +10,6 @@ class RectangularSymetricSignal(SignalGenerator):
                  sampling_frequency: float) -> Signal:
         x = self.get_arguments(start_time, duration, sampling_frequency)
 
-        y = signal.square(x, duty=fill_factor)
+        y = amplitude * signal.square(x, duty=fill_factor)
 
         return Signal(start_time, 1 / period, sampling_frequency, y, SignalType.REAL, PeriodicalSignal.YES)

@@ -9,8 +9,8 @@ class RectangularSignal(SignalGenerator):
     def generate(self, amplitude: float, start_time: float, duration: float, period: float, fill_factor: float,
                  sampling_frequency: float) -> Signal:
         x = self.get_arguments(start_time, duration, sampling_frequency)
+        frequency = 1 / period
 
-        temp = signal.square(x, duty=fill_factor)
-        y = 0.5 * (temp + abs(temp))
+        y = amplitude * signal.square(x * frequency, duty=fill_factor)
 
-        return Signal(start_time, 1 / period, sampling_frequency, y, SignalType.REAL, PeriodicalSignal.YES)
+        return Signal(start_time, frequency, sampling_frequency, y, SignalType.REAL, PeriodicalSignal.YES)

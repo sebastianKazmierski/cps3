@@ -11,6 +11,7 @@ import numpy as np
 
 from signal_generators2.sin_straightened_in_one_half import SinStraightenedInOneHalf
 from signal_generators2.sin_straightened_in_two_half import SinStraightenedInTwoHalf
+from signal_generators2.traiangul_signal import TriangularSignal
 from signal_type import SignalType
 
 
@@ -45,8 +46,9 @@ SinOneHalf = SinStraightenedInOneHalf()
 sinThoHalf = SinStraightenedInTwoHalf()
 rectangularSignal = RectangularSignal()
 rectangularSymetricSignal = RectangularSymetricSignal()
+triangular_signal = TriangularSignal()
 
-signalUniform = rectangularSymetricSignal.generate(1, 1, 10, 3, 0.7, 100)
+signalUniform = rectangularSymetricSignal.generate(2, 1, 10, 0.1, 0.5, 100)
 
 print("elo")
 show_statistics(signalUniform)
