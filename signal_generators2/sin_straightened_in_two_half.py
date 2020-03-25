@@ -3,7 +3,7 @@ import math
 from signal import Signal
 from signal_generators2.signal_generator import SignalGenerator
 from signal_type import SignalType
-from type_of_periodical import PeriodicalSignal
+from type_of_periodical import SignalPeriodic
 
 
 class SinStraightenedInTwoHalf(SignalGenerator):
@@ -13,4 +13,4 @@ class SinStraightenedInTwoHalf(SignalGenerator):
 
         y = 0.5 * amplitude * abs(np.sin(((2 * math.pi) / period) * (x - start_time)))
 
-        return Signal(start_time, 1 / period, sampling_frequency, y, SignalType.REAL, PeriodicalSignal.YES)
+        return Signal(start_time, 1 / period, sampling_frequency, y, SignalType.REAL, SignalPeriodic.YES)

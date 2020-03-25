@@ -3,7 +3,7 @@ import numpy as np
 from signal import Signal
 from signal_generators2.signal_generator import SignalGenerator
 from signal_type import SignalType
-from type_of_periodical import PeriodicalSignal
+from type_of_periodical import SignalPeriodic
 
 
 class UniformDistribution(SignalGenerator):
@@ -14,4 +14,4 @@ class UniformDistribution(SignalGenerator):
         y = np.random.rand(len(x)) * (2*amplitude) - amplitude
         z = list(y)
 
-        return Signal(start_time, 1 / period, sampling_frequency, z, SignalType.REAL, PeriodicalSignal.NO)
+        return Signal(start_time, 1 / period, sampling_frequency, z, SignalType.REAL, SignalPeriodic.NO)

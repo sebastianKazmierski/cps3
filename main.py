@@ -37,8 +37,8 @@ def display(signal: Signal):
     plt.show()
 
 
-test = SinGenerator()
-signal = test.generate(1, 1, 10, 2, 0, 5)
+sin = SinGenerator()
+signal = sin.generate(1, 1, 10, 2, 0, 5)
 
 file_manager.write(signal, "signal2.pickle")
 
@@ -55,11 +55,12 @@ unit_jump = UnitJump()
 unit_impuls = UnitImpuls()
 impulse_noise = ImpulseNoise()
 
-signalUniform = impulse_noise.generate(2, -10, 21, 0.1, 0.5, 4)
+signal1 = sin.generate(2, -10, 21, 2, 0.5, 1000)
+signal2 = sin.generate(2, -10, 21, 2, 0.5, 1000)
 
 print("elo")
-show_statistics(signalUniform)
-display(signalUniform)
+show_statistics(signal1)
+display(signal1)
 
 # freq = 50
 # time_period = 1/freq

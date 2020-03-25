@@ -2,12 +2,12 @@ from signal_type import SignalType
 # import matplotlib.pyplot as plt
 import numpy as np
 
-from type_of_periodical import PeriodicalSignal
+from type_of_periodical import SignalPeriodic
 
 
 class Signal:
     def __init__(self, start_time: float, signal_frequency: float, sampling_frequency: float, samples: list,
-                 signal_type: SignalType, signal_periodic: PeriodicalSignal):
+                 signal_type: SignalType, signal_periodic: SignalPeriodic):
         self.start_time = start_time
         self.sampling_frequency = sampling_frequency
         self.signal_type = signal_type
@@ -25,7 +25,7 @@ class Signal:
     #     plt.show()
 
     def get_number_of_samples_in_one_period(self):
-        if self.signal_periodic == PeriodicalSignal.YES:
+        if self.signal_periodic == SignalPeriodic.YES:
             signal_period = 1 / self.signal_frequency
             sampling_period = 1 / self.sampling_frequency
             return round((signal_period / sampling_period))

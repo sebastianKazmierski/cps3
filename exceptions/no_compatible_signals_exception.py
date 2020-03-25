@@ -1,0 +1,2 @@
+class NoCompatibleSignalException(Exception):
+    pass

@@ -1,6 +1,6 @@
 from enum import Enum
 
 
-class PeriodicalSignal(Enum):
+class SignalPeriodic(Enum):
     NO = 0
     YES = 1

@@ -1,7 +1,7 @@
 from signal import Signal
 from signal_generators2.signal_generator import SignalGenerator
 from signal_type import SignalType
-from type_of_periodical import PeriodicalSignal
+from type_of_periodical import SignalPeriodic
 import numpy as np
 
 
@@ -18,4 +18,4 @@ class ImpulseNoise(SignalGenerator):
                 y[i] = 0
 
         frequency = 1 / period
-        return Signal(start_time, frequency, sampling_frequency, list(y), SignalType.REAL, PeriodicalSignal.NO)
+        return Signal(start_time, frequency, sampling_frequency, list(y), SignalType.REAL, SignalPeriodic.NO)

@@ -5,7 +5,7 @@ import numpy as np
 import math
 
 
-from type_of_periodical import PeriodicalSignal
+from type_of_periodical import SignalPeriodic
 
 
 class SinGenerator(SignalGenerator):
@@ -15,4 +15,4 @@ class SinGenerator(SignalGenerator):
 
         y = amplitude * np.sin(((2 * math.pi) / period) * (x - start_time))
 
-        return Signal(start_time, 1 / period, sampling_frequency, y, SignalType.REAL, PeriodicalSignal.YES)
+        return Signal(start_time, 1 / period, sampling_frequency, y, SignalType.REAL, SignalPeriodic.YES)
