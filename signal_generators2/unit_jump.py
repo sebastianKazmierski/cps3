@@ -2,7 +2,6 @@ from signal import Signal
 from signal_generators2.signal_generator import SignalGenerator
 from signal_type import SignalType
 from type_of_periodical import PeriodicalSignal
-from scipy import signal
 
 
 class UnitJump(SignalGenerator):

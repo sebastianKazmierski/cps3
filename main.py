@@ -1,5 +1,6 @@
 import file_manager
 from signal import Signal
+from signal_generators2.impulse_noise import ImpulseNoise
 from signal_generators2.noise_gaus_distribution import GausDistribution
 from signal_generators2.noise_uniform_distribution import UniformDistribution
 import matplotlib.pyplot as plt
@@ -12,6 +13,7 @@ import numpy as np
 from signal_generators2.sin_straightened_in_one_half import SinStraightenedInOneHalf
 from signal_generators2.sin_straightened_in_two_half import SinStraightenedInTwoHalf
 from signal_generators2.traiangul_signal import TriangularSignal
+from signal_generators2.unit_impuls import UnitImpuls
 from signal_generators2.unit_jump import UnitJump
 
 from signal_type import SignalType
@@ -30,8 +32,8 @@ def display(signal: Signal):
     axes1 = fig1.add_axes([0.1, 0.1, 0.8, 0.8])
     period = 1 / signal.sampling_frequency
     stop_time = signal.start_time + (period * (len(signal.samples)))
-    axes1.plot(np.arange(signal.start_time, stop_time, period), signal.samples, color='red', linewidth=3,
-               linestyle='-')
+    axes1.plot(np.arange(signal.start_time, stop_time, period), signal.samples, color='red', linestyle=' ',
+               marker='o')
     plt.show()
 
 
@@ -50,8 +52,10 @@ rectangularSignal = RectangularSignal()
 rectangularSymetricSignal = RectangularSymetricSignal()
 triangular_signal = TriangularSignal()
 unit_jump = UnitJump()
+unit_impuls = UnitImpuls()
+impulse_noise = ImpulseNoise()
 
-signalUniform = unit_jump.generate(2, 0.0000, 21, 0.1, 10, 100)
+signalUniform = impulse_noise.generate(2, -10, 21, 0.1, 0.5, 4)
 
 print("elo")
 show_statistics(signalUniform)
