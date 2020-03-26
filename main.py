@@ -19,12 +19,7 @@ from signal_generators2.unit_jump import UnitJump
 from signal_operation import SignalOperation
 
 
-def show_statistics(read_signal: Signal):
-    print(read_signal.average_signal_value())
-    print(read_signal.absolute_average_signal_value())
-    print(read_signal.average_power_of_signal())
-    print(read_signal.signal_variance())
-    print(read_signal.effective_value())
+
 
 
 sin = SinGenerator()
