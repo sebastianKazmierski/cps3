@@ -47,7 +47,7 @@ class SignalOperation:
                 new_values[i] = signal1_values[i]
 
         return Signal(signal1.start_time, signal1.signal_frequency, signal1.sampling_frequency, new_values,
-                      SignalType.REAL, get_periodical(signal1,signal2))
+                      SignalType.REAL, get_periodical(signal1, signal2))
 
     def perform_signal_action(self, signal1: Signal, signal2: Signal, operation: operator) -> Signal:
         check_compatibility(signal1, signal2)
@@ -57,4 +57,4 @@ class SignalOperation:
         new_values = operation(singal1_values, signal2_values)
 
         return Signal(signal1.start_time, signal1.signal_frequency, signal1.sampling_frequency, new_values,
-                      SignalType.REAL, get_periodical(signal1,signal2))
+                      SignalType.REAL, get_periodical(signal1, signal2))

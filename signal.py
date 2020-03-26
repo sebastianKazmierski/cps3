@@ -1,5 +1,4 @@
 from signal_type import SignalType
-# import matplotlib.pyplot as plt
 import numpy as np
 
 from type_of_periodical import SignalPeriodic
@@ -14,15 +13,6 @@ class Signal:
         self.samples = samples
         self.signal_frequency = signal_frequency
         self.signal_periodic = signal_periodic
-
-    # def display(self):
-    #     fig1 = plt.figure(figsize=(10, 4))
-    #     axes1 = fig1.add_axes([0.1, 0.1, 0.8, 0.8])
-    #     period = 1 / self.sampling_frequency
-    #     stop_time = self.start_time + (period * (len(self.samples)))
-    #     axes1.plot(np.arange(self.start_time, stop_time, period), self.samples, color='red', linewidth=3,
-    #                linestyle='-')
-    #     plt.show()
 
     def get_number_of_samples_in_one_period(self):
         if self.signal_periodic == SignalPeriodic.YES:
