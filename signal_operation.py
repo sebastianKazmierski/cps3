@@ -42,7 +42,7 @@ class SignalOperation:
         new_values = list(range(len(signal1_values)))
         for i in range(len(signal1_values)):
             if signal2_values[i] != 0.0:
-                new_values[i] = signal1_values[i] / signal2_values
+                new_values[i] = signal1_values[i] / signal2_values[i]
             else:
                 new_values[i] = signal1_values[i]
 

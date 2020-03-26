@@ -15,8 +15,7 @@ from signal_generators2.sin_straightened_in_two_half import SinStraightenedInTwo
 from signal_generators2.traiangul_signal import TriangularSignal
 from signal_generators2.unit_impuls import UnitImpuls
 from signal_generators2.unit_jump import UnitJump
-
-from signal_type import SignalType
+from signal_operation import SignalOperation
 
 
 def show_statistics(read_signal: Signal):
@@ -56,11 +55,16 @@ unit_impuls = UnitImpuls()
 impulse_noise = ImpulseNoise()
 
 signal1 = sin.generate(2, -10, 21, 2, 0.5, 1000)
-signal2 = sin.generate(2, -10, 21, 2, 0.5, 1000)
+signal2 = triangular_signal.generate(2, -10, 21, 2, 0.5, 1000)
+
+signal_operator = SignalOperation()
+
+signal3 = signal_operator.division(signal1, signal2)
+
 
 print("elo")
-show_statistics(signal1)
-display(signal1)
+show_statistics(signal3)
+display(signal3)
 
 # freq = 50
 # time_period = 1/freq
