@@ -17,40 +17,39 @@ from signal_generators2.traiangul_signal import TriangularSignal
 from signal_generators2.unit_impuls import UnitImpuls
 from signal_generators2.unit_jump import UnitJump
 from signal_operation import SignalOperation
+from user_interface import start
 
-
-
-
-
-sin = SinGenerator()
-signal = sin.generate(1, 1, 10, 2, 0, 5)
-
-file_manager.write(signal, "signal2.pickle")
-
-read_signal = file_manager.read("signal2.pickle")
-
-uniform = UniformDistribution()
-gaus = GausDistribution()
-SinOneHalf = SinStraightenedInOneHalf()
-sinThoHalf = SinStraightenedInTwoHalf()
-rectangularSignal = RectangularSignal()
-rectangularSymetricSignal = RectangularSymetricSignal()
-triangular_signal = TriangularSignal()
-unit_jump = UnitJump()
-unit_impuls = UnitImpuls()
-impulse_noise = ImpulseNoise()
-
-signal1 = unit_impuls.generate(2, -10, 21, 2, 0.5, 1000)
-signal2 = triangular_signal.generate(2, -10, 21, 2, 0.5, 1000)
-
-signal_operator = SignalOperation()
-
-signal3 = signal_operator.division(signal1, signal2)
-
-
-print("elo")
-show_statistics(signal3)
-display(signal3)
+start()
+#
+# sin = SinGenerator()
+# signal = sin.generate(1, 1, 10, 2, 0, 5)
+#
+# file_manager.write(signal, "signal2.pickle")
+#
+# read_signal = file_manager.read("signal2.pickle")
+#
+# uniform = UniformDistribution()
+# gaus = GausDistribution()
+# SinOneHalf = SinStraightenedInOneHalf()
+# sinThoHalf = SinStraightenedInTwoHalf()
+# rectangularSignal = RectangularSignal()
+# rectangularSymetricSignal = RectangularSymetricSignal()
+# triangular_signal = TriangularSignal()
+# unit_jump = UnitJump()
+# unit_impuls = UnitImpuls()
+# impulse_noise = ImpulseNoise()
+#
+# signal1 = unit_impuls.generate(2, -10, 21, 2, 0.5, 1000)
+# signal2 = triangular_signal.generate(2, -10, 21, 2, 0.5, 1000)
+#
+# signal_operator = SignalOperation()
+#
+# signal3 = signal_operator.division(signal1, signal2)
+#
+#
+# print("elo")
+# show_statistics(signal3)
+# display(signal3)
 
 # freq = 50
 # time_period = 1/freq

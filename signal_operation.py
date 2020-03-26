@@ -14,13 +14,13 @@ def get_periodical(signal1: Signal, signal2: Signal) -> SignalPeriodic:
 def check_compatibility(signal1: Signal, signal2: Signal):
     message = ""
     if signal1.sampling_frequency != signal2.sampling_frequency:
-        message += "Sygnały nie mają tej samej częstotliwości prubkowania\n"
+        message += "Sygnały nie mają tej samej częstotliwości próbkowania\n"
     if signal1.start_time != signal2.start_time:
         message += "Sygnały nie mają tego samego czasu początkowego\n"
     if len(signal1.samples) != len(signal2.samples):
         message += "Sygnały nie mają tej samej ilości próbek"
         if signal1.signal_type == SignalType.COMPLEX or signal2.signal_type == SignalType.COMPLEX:
-            message += "Minum jeden z wybranych sygnałów jest sugnałem zespolonym"
+            message += "Mnimum jeden z wybranych sygnałów jest sugnałem zespolonym"
 
 
 class SignalOperation:

@@ -19,6 +19,20 @@ from signal_operation import SignalOperation
 from signal_parameters import SignalParameters
 
 
+def start():
+    answer = 1
+    while answer != 3:
+        print("Wybierz co chcesz zrobic")
+        print("1. Wykonaj operacjie na sygnałąch")
+        print("2. Wygeneruj nowy sygnał")
+        print("3. Zakończ program")
+        answer = int(input())
+        if answer == 1:
+            perform_operation()
+        elif answer == 2:
+            present_signal(generate_signal())
+
+
 def get_parameter(parameter: SignalParameters):
     print(parameter.name + ": ")
     return float(input())
@@ -38,8 +52,7 @@ def load_signal_from_file():
     return read(file_name)
 
 
-def generete_signal():
-    global signal
+def generate_signal():
     list = [ImpulseNoise(), GausDistribution(), UniformDistribution(), RectangularSymetricSignal(),
             RectangularSignal(), SinGenerator(), SinStraightenedInOneHalf(), SinStraightenedInTwoHalf(),
             TriangularSignal(), UnitImpuls(), UnitJump()]
@@ -55,11 +68,13 @@ def generete_signal():
     return signal_generator.generate(*required_parameters)
 
 
-def present_signal():
-    global signal, answer
-    signal = generete_signal()
+def present_signal(signal: Signal):
     show_statistics(signal)
     display(signal)
+    save_to_file(signal)
+
+
+def save_to_file(signal):
     print("Czy chcesz zapisac sygnał do pliku? (t/N)")
     answer = input()
     if answer == "t" or answer == "T":
@@ -68,18 +83,14 @@ def present_signal():
         write(signal, file_name)
 
 
-present_signal()
-
-
 def get_one_element_of_operation():
-    global answer
     print("1. Wczytaj sygnał z pliku")
     print("2. Wygeneruj nowy sygnał")
     answer = int(input())
     if answer == 1:
         return load_signal_from_file()
     else:
-        return generete_signal()
+        return generate_signal()
 
 
 def get_elements_of_operation():
@@ -91,7 +102,6 @@ def get_elements_of_operation():
 
 
 def perform_operation():
-    global answer, signal_operation
     print("Wybierz rodzaj operacji")
     print("1. Dodawanie")
     print("2. Odejmowanie")
@@ -109,14 +119,3 @@ def perform_operation():
     elif answer == 4:
         result = signal_operation.division(signal1, signal2)
     present_signal(result)
-
-
-perform_operation()
-
-
-
-
-
-
-
-
