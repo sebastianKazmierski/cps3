@@ -1,7 +1,7 @@
 import time
 import curses
 
-from draw_plot import display, display_bar
+from draw_plot import draw_bar, draw_histogram, display
 from file_manager import write, read
 from signal import Signal
 from signal_generators2.impulse_noise import ImpulseNoise
@@ -17,20 +17,24 @@ from signal_generators2.unit_impuls import UnitImpuls
 from signal_generators2.unit_jump import UnitJump
 from signal_operation import SignalOperation
 from signal_parameters import SignalParameters
+from type_of_plot import PlotType
 
 
 def start():
     answer = 1
-    while answer != 3:
+    while answer != 4:
         print("Wybierz co chcesz zrobic")
         print("1. Wykonaj operacjie na sygnałąch")
         print("2. Wygeneruj nowy sygnał")
-        print("3. Zakończ program")
+        print("3. Wczytaj sygnał z pliku")
+        print("4. Zakończ program")
         answer = int(input())
         if answer == 1:
             perform_operation()
         elif answer == 2:
             present_signal(generate_signal())
+        elif answer == 3:
+            present_signal(load_signal_from_file())
 
 
 def get_parameter(parameter: SignalParameters):
@@ -70,10 +74,17 @@ def generate_signal():
 
 def present_signal(signal: Signal):
     show_statistics(signal)
-    display(signal)
+    print("Wybierz co rodzaj wykresu")
+    print("1. Dyskretny")
+    print("2. Ciągły")
+    answer = int(input())
+    if answer == 1:
+        plot_type = PlotType.DISCRETE
+    elif answer == 2:
+        plot_type = PlotType.CONTINUOUS
     print("Podaj liczbę przedziałów dla której chcesz wyświetlić histogram:")
     answer = int(input())
-    display_bar(signal,answer)
+    display(signal, plot_type, answer)
     save_to_file(signal)
 
 

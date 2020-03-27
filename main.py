@@ -1,5 +1,5 @@
 import file_manager
-from draw_plot import display, count_intervals2, display_bar
+from draw_plot import draw_bar, count_intervals2, draw_histogram
 from signal import Signal
 from signal_generators2.impulse_noise import ImpulseNoise
 from signal_generators2.noise_gaus_distribution import GausDistribution
