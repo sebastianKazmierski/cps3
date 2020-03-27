@@ -1,5 +1,5 @@
 import file_manager
-from draw_plot import display
+from draw_plot import display, count_intervals2, display_bar
 from signal import Signal
 from signal_generators2.impulse_noise import ImpulseNoise
 from signal_generators2.noise_gaus_distribution import GausDistribution
@@ -19,28 +19,28 @@ from signal_generators2.unit_jump import UnitJump
 from signal_operation import SignalOperation
 from user_interface import start
 
-start()
+# start()
 #
-# sin = SinGenerator()
-# signal = sin.generate(1, 1, 10, 2, 0, 5)
-#
-# file_manager.write(signal, "signal2.pickle")
-#
-# read_signal = file_manager.read("signal2.pickle")
-#
-# uniform = UniformDistribution()
-# gaus = GausDistribution()
-# SinOneHalf = SinStraightenedInOneHalf()
-# sinThoHalf = SinStraightenedInTwoHalf()
-# rectangularSignal = RectangularSignal()
-# rectangularSymetricSignal = RectangularSymetricSignal()
-# triangular_signal = TriangularSignal()
-# unit_jump = UnitJump()
-# unit_impuls = UnitImpuls()
-# impulse_noise = ImpulseNoise()
-#
-# signal1 = unit_impuls.generate(2, -10, 21, 2, 0.5, 1000)
-# signal2 = triangular_signal.generate(2, -10, 21, 2, 0.5, 1000)
+
+
+
+uniform = UniformDistribution()
+gaus = GausDistribution()
+sin = SinGenerator()
+SinOneHalf = SinStraightenedInOneHalf()
+sinThoHalf = SinStraightenedInTwoHalf()
+rectangularSignal = RectangularSignal()
+rectangularSymetricSignal = RectangularSymetricSignal()
+triangular_signal = TriangularSignal()
+unit_jump = UnitJump()
+unit_impuls = UnitImpuls()
+impulse_noise = ImpulseNoise()
+
+signal1 = impulse_noise.generate(2, -10, 21, 2,0.8, 1000)
+signal2 = triangular_signal.generate(2, -10, 21, 2, 0.5, 1000)
+display(signal1)
+display_bar(signal1, 5)
+
 #
 # signal_operator = SignalOperation()
 #
