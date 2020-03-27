@@ -1,7 +1,7 @@
 import time
 import curses
 
-from draw_plot import display
+from draw_plot import display, display_bar
 from file_manager import write, read
 from signal import Signal
 from signal_generators2.impulse_noise import ImpulseNoise
@@ -71,6 +71,9 @@ def generate_signal():
 def present_signal(signal: Signal):
     show_statistics(signal)
     display(signal)
+    print("Podaj liczbę przedziałów dla której chcesz wyświetlić histogram:")
+    answer = int(input())
+    display_bar(signal,answer)
     save_to_file(signal)
 
 

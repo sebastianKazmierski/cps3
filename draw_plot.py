@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+from df import get_arguments
 from signal import Signal
 from type_of_periodical import SignalPeriodic
 
@@ -10,23 +11,22 @@ def display(signal: Signal):
     fig1 = plt.figure(figsize=(10, 4))
     axes1 = fig1.add_axes([0.1, 0.1, 0.8, 0.8])
     period = 1 / signal.sampling_frequency
-    stop_time = signal.start_time + (period * (len(signal.samples)))
-    axes1.plot(np.arange(signal.start_time, stop_time, period), signal.samples, color='red', linestyle=' ',
+    arguments = create_arguments(signal.start_time, period, len(signal.samples))
+    axes1.plot(arguments, signal.samples, color='red', linestyle=' ',
                marker='o')
     plt.show()
 
 
-def display_bar(signal: Signal, number_of_compartment: int):
-    # y = [0] * number_of_compartment
-    # intervals = count_intervals2(signal, number_of_compartment)
-    # for e in signal.samples:
-    #     for i in range(number_of_compartment):
-    #         if e in intervals[i]:
-    #             y[i] += 1
+def create_arguments(start: float, step: float, length: int):
+    arguments = []
+    value = start
+    for i in range(length):
+        arguments.append(value)
+        value += step
+    return arguments
 
-    # out = pd.cut(signal.samples, bins=count_intervals2(signal, number_of_compartment), include_lowest=True)
-    # ax = out.value_counts().plot.bar(rot=0, color="b", figsize=(6, 4))
-    # ax.set_xticklabels([c[1:-1].replace(",", " to") for c in out.cat.categories])
+
+def display_bar(signal: Signal, number_of_compartment: int):
     if signal.signal_periodic == SignalPeriodic.YES:
         number_of_samples_in_one_period = signal.get_number_of_samples_in_one_period()
         number_of_samples_in_period = len(

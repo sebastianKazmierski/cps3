@@ -12,7 +12,7 @@ class SinStraightenedInTwoHalf(SignalGenerator):
                  sampling_frequency: float) -> Signal:
         x = self.get_arguments(start_time, duration, sampling_frequency)
 
-        y = 0.5 * amplitude * abs(np.sin(((2 * math.pi) / period) * (x - start_time)))
+        y = amplitude * abs(np.sin(((2 * math.pi) / period) * (x - start_time)))
 
         return Signal(start_time, 1 / period, sampling_frequency, y, SignalType.REAL, SignalPeriodic.YES)
 

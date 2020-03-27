@@ -19,27 +19,27 @@ from signal_generators2.unit_jump import UnitJump
 from signal_operation import SignalOperation
 from user_interface import start
 
-# start()
+start()
 #
 
 
 
-uniform = UniformDistribution()
-gaus = GausDistribution()
-sin = SinGenerator()
-SinOneHalf = SinStraightenedInOneHalf()
-sinThoHalf = SinStraightenedInTwoHalf()
-rectangularSignal = RectangularSignal()
-rectangularSymetricSignal = RectangularSymetricSignal()
-triangular_signal = TriangularSignal()
-unit_jump = UnitJump()
-unit_impuls = UnitImpuls()
-impulse_noise = ImpulseNoise()
-
-signal1 = impulse_noise.generate(2, -10, 21, 2,0.8, 1000)
-signal2 = triangular_signal.generate(2, -10, 21, 2, 0.5, 1000)
-display(signal1)
-display_bar(signal1, 5)
+# uniform = UniformDistribution()
+# gaus = GausDistribution()
+# sin = SinGenerator()
+# SinOneHalf = SinStraightenedInOneHalf()
+# sinThoHalf = SinStraightenedInTwoHalf()
+# rectangularSignal = RectangularSignal()
+# rectangularSymetricSignal = RectangularSymetricSignal()
+# triangular_signal = TriangularSignal()
+# unit_jump = UnitJump()
+# unit_impuls = UnitImpuls()
+# impulse_noise = ImpulseNoise()
+#
+# signal1 = sin.generate(2, -10, 21, 2, 1000)
+# signal2 = triangular_signal.generate(2, -10, 21, 2, 0.5, 1000)
+# display(signal1)
+# display_bar(signal1, 5)
 
 #
 # signal_operator = SignalOperation()
