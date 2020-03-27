@@ -1,6 +1,6 @@
-from signal import Signal
-from signal_type import SignalType
-from type_of_periodical import SignalPeriodic
+from signals.signal import Signal
+from enums.signal_type import SignalType
+from enums.type_of_periodical import SignalPeriodic
 import operator
 
 

@@ -1,4 +1,3 @@
-from signal import Signal
 import numpy as np
 
 class SignalGenerator:

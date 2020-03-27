@@ -1,6 +1,6 @@
 import pickle
 
-from signal import Signal
+from signals.signal import Signal
 
 directory_with_files = "signals/"
 

@@ -1,11 +1,11 @@
-from signal import Signal
+from signals.signal import Signal
 from signal_generators2.signal_generator import SignalGenerator
-from signal_parameters import SignalParameters
-from signal_type import SignalType
+from enums.signal_parameters import SignalParameters
+from enums.signal_type import SignalType
 import numpy as np
 import math
 
-from type_of_periodical import SignalPeriodic
+from enums.type_of_periodical import SignalPeriodic
 
 
 class SinGenerator(SignalGenerator):

@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
-from signal import Signal
-from type_of_periodical import SignalPeriodic
-from type_of_plot import PlotType
+from signals.signal import Signal
+from enums.type_of_periodical import SignalPeriodic
+from enums.type_of_plot import PlotType
 
 
 def display(signal: Signal, plot_type: PlotType, number_of_compartment: int):

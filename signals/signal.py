@@ -1,7 +1,7 @@
-from signal_type import SignalType
+from enums.signal_type import SignalType
 import numpy as np
 
-from type_of_periodical import SignalPeriodic
+from enums.type_of_periodical import SignalPeriodic
 
 
 class Signal:

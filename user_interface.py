@@ -1,9 +1,6 @@
-import time
-import curses
-
-from draw_plot import draw_bar, draw_histogram, display
-from file_manager import write, read
-from signal import Signal
+from draw.draw_plot import display
+from files.file_manager import write, read
+from signals.signal import Signal
 from signal_generators2.impulse_noise import ImpulseNoise
 from signal_generators2.noise_gaus_distribution import GausDistribution
 from signal_generators2.noise_uniform_distribution import UniformDistribution
@@ -16,15 +13,15 @@ from signal_generators2.traiangul_signal import TriangularSignal
 from signal_generators2.unit_impuls import UnitImpuls
 from signal_generators2.unit_jump import UnitJump
 from signal_operation import SignalOperation
-from signal_parameters import SignalParameters
-from type_of_plot import PlotType
+from enums.signal_parameters import SignalParameters
+from enums.type_of_plot import PlotType
 
 
 def start():
     answer = 1
     while answer != 4:
         print("Wybierz co chcesz zrobic")
-        print("1. Wykonaj operacjie na sygnałąch")
+        print("1. Wykonaj operacjie na sygnałach")
         print("2. Wygeneruj nowy sygnał")
         print("3. Wczytaj sygnał z pliku")
         print("4. Zakończ program")
@@ -74,7 +71,7 @@ def generate_signal():
 
 def present_signal(signal: Signal):
     show_statistics(signal)
-    print("Wybierz co rodzaj wykresu")
+    print("Wybierz rodzaj wykresu")
     print("1. Dyskretny")
     print("2. Ciągły")
     answer = int(input())

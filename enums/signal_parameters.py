@@ -9,3 +9,4 @@ class SignalParameters(Enum):
     FILL_FACTOR = 5
     PROBABILITY = 6
     SAMPLING_FREQUENCY = 7
+    JUMP_TIME = 8
