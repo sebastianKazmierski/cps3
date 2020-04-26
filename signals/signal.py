@@ -72,3 +72,5 @@ class Signal:
 
     def effective_value(self):
         return np.sqrt(self.average_power_of_signal())
+
+

@@ -23,8 +23,9 @@ def draw_bar(signal: Signal, plot_type: PlotType, fig):
         draw_continuous_signal(arguments, axes1, signal)
 
 
+# FIXME TU SIE WLACZA RYSOWANIE LINII NA WYKRESIE - > linestyle='-' dla ciaglej linestyle='--' dla przerywanej
 def draw_discrete_signal(arguments, axes1, signal):
-    axes1.plot(arguments, signal.samples, color='red', linestyle=' ',
+    axes1.plot(arguments, signal.samples, color='red', linestyle='--',
                marker='o')
 
 
