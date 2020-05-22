@@ -11,6 +11,7 @@ from enums.type_of_periodical import SignalPeriodic
 class SinGenerator(SignalGenerator):
     def generate(self, amplitude: float, start_time: float, duration: float, period: float,
                  sampling_frequency: float) -> Signal:
+        sampling_frequency -= 1
         x = self.get_arguments(start_time, duration, sampling_frequency)
 
         y = amplitude * np.sin(((2 * math.pi) / period) * (x - start_time))
