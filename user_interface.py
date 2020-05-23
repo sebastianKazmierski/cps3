@@ -12,7 +12,7 @@ from signal_generators2.sin_straightened_in_two_half import SinStraightenedInTwo
 from signal_generators2.traiangul_signal import TriangularSignal
 from signal_generators2.unit_impuls import UnitImpuls
 from signal_generators2.unit_jump import UnitJump
-from signal_operation import SignalOperation
+from signals.signal_operation import SignalOperation
 from enums.signal_parameters import SignalParameters
 from enums.type_of_plot import PlotType
 

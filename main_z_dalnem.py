@@ -1,55 +1,31 @@
 import matplotlib.pyplot as plt
 
-from converters.adc.rounding_quantizator import RoundingQuantizator
-from converters.adc.sampler import Sampler
-from converters.adc.sampling_rate import SamplingRate
-from converters.dac.first_order_holder import FirstOrderHoldConverter
-from converters.dac.sinc_reconstructor import SincReconstructor
-from converters.dac.zero_order_hold import ZeroOrderHoldConverter
 from cps3.filter import Filter
-from draw.draw_plot import draw_bar
 from enums.type_of_plot import PlotType
-from errors.reconstruction_error import ReconstructionError
-from errors.md import MD
-from errors.mse import MSE
-from errors.psnr import PSNR
-from errors.snr import SNR
-from errors.reconstruction_error import ReconstructionError
+from signal_generators2.rectangular_signal import RectangularSignal
 from signal_generators2.sin import SinGenerator
-from signal_operation import SignalOperation
-from cps3 import filter
 from draw.draw_plot import create_arguments
+from signal_generators2.traiangul_signal import TriangularSignal
+from signals.signal_operation import SignalOperation
 
 
 def rysuj_sinus():
     gen = SinGenerator()
-    signal = gen.generate(1, 0, 1, 0.05, 10000.0)
+    signal_operation = SignalOperation()
+    triangular_gen = TriangularSignal()
+    triangular_signal = triangular_gen.generate(1, 0, 1, 0.10, 0.7,  10001.0)
 
-    filter1 = Filter(500, 50)
+    sin_signal = gen.generate(1, 0, 0.005, 0.001, 100000.0)
+    triangular_signal = gen.generate(0.3, 0, 0.005, 0.00015, 100000.0)
+
+    signal = signal_operation.add(sin_signal, triangular_signal)
+
+    filter1 = Filter(100, 33)
 
     filteredSignal = filter1.filter(signal)
 
-
-
     plot_type = PlotType.CONTINUOUS
 
-    # sampler = Sampler()
-    # sampled_signal = sampler.convert(signal, 1200)
-    #
-    # quantizator = RoundingQuantizator(3)
-    # quantized_signal = quantizator.convert(signal, 1000)
-    #
-    # zoh = ZeroOrderHoldConverter()
-    # signal_after_zoh = zoh.convert(sampled_signal, 1000)
-    #
-    # foh = FirstOrderHoldConverter()
-    # signal_after_foh = foh.convert(sampled_signal, 1000)
-    #
-    # sinc = SincReconstructor(SamplingRate(10000))
-    # signal_after_sinc = sinc.convert(sampled_signal, 5)
-
-    # bar = plt.figure(1)
-    # # draw_bar(signal, plot_type, bar)
     # draw_bar(filteredSignal, plot_type, bar)
 
     period = 1 / signal.sampling_frequency
@@ -58,12 +34,19 @@ def rysuj_sinus():
     period2 = 1 / filteredSignal.sampling_frequency
     arguments2 = create_arguments(filteredSignal.start_time, period, len(filteredSignal.samples))
 
+    period3 = 1 / triangular_signal.sampling_frequency
+    arguments3 = create_arguments(triangular_signal.start_time, period, len(triangular_signal.samples))
+
+    period4 = 1 / sin_signal.sampling_frequency
+    arguments4 = create_arguments(sin_signal.start_time, period, len(sin_signal.samples))
+
     # # draw_bar(signal, plot_type, bar)
     # bar.show()
 
-    plt.plot(arguments2, filteredSignal.samples)
+    # plt.plot(arguments2, filteredSignal.samples)
     plt.plot(arguments, signal.samples)
-
+    # plt.plot(arguments3, triangular_signal.samples)
+    # plt.plot(arguments4, sin_signal.samples)
 
     plt.legend(["Dataset 1", "Dataset 2"])
 

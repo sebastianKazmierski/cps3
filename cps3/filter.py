@@ -27,7 +27,8 @@ class Filter:
         for i in range(self.m + n - 2):
             point = 0
             for j in range(self.m - 1):
-                point += high_pass(j) * self.hanning(j) * self.filter_impulsive_answer(j) * get_value(x, i - j)
+                point += self.filter_impulsive_answer(j) * get_value(x, i - j)
+                # point += high_pass(j) * self.hanning(j) * self.filter_impulsive_answer(j) * get_value(x, i - j)
             splot[i] = point
 
         signal2 = Signal(signal.start_time, signal.signal_frequency, signal.sampling_frequency, splot,
