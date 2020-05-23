@@ -23,11 +23,11 @@ class Filter:
         x = signal.samples
         n = len(x)
 
-        splot = list(range(self.m + n - 2))
-        for i in range(self.m + n - 2):
+        splot = list(range(n))
+        for i in range(n):
             point = 0
             for j in range(self.m - 1):
-                point += self.filter_impulsive_answer(j) * get_value(x, i - j)
+                point += (self.filter_impulsive_answer(j) * get_value(x, i - j))
                 # point += high_pass(j) * self.hanning(j) * self.filter_impulsive_answer(j) * get_value(x, i - j)
             splot[i] = point
 

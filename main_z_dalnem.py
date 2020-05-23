@@ -15,12 +15,12 @@ def rysuj_sinus():
     triangular_gen = TriangularSignal()
     triangular_signal = triangular_gen.generate(1, 0, 1, 0.10, 0.7,  10001.0)
 
-    sin_signal = gen.generate(1, 0, 0.005, 0.001, 100000.0)
-    triangular_signal = gen.generate(0.3, 0, 0.005, 0.00015, 100000.0)
+    sin_signal = gen.generate(1, 0, 0.01, 0.001, 100000.0)
+    triangular_signal = gen.generate(0.3, 0, 0.01, 0.00015, 100000.0)
 
     signal = signal_operation.add(sin_signal, triangular_signal)
 
-    filter1 = Filter(100, 33)
+    filter1 = Filter(1000, 90)
 
     filteredSignal = filter1.filter(signal)
 
@@ -43,7 +43,7 @@ def rysuj_sinus():
     # # draw_bar(signal, plot_type, bar)
     # bar.show()
 
-    # plt.plot(arguments2, filteredSignal.samples)
+    plt.plot(arguments2, filteredSignal.samples)
     plt.plot(arguments, signal.samples)
     # plt.plot(arguments3, triangular_signal.samples)
     # plt.plot(arguments4, sin_signal.samples)
