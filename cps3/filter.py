@@ -30,9 +30,9 @@ class Filter:
                 point += high_pass(j) * self.hanning(j) * self.filter_impulsive_answer(j) * get_value(x, i - j)
             splot[i] = point
 
-        signal.samples = splot
-        return signal
-
+        signal2 = Signal(signal.start_time, signal.signal_frequency, signal.sampling_frequency, splot,
+                         signal.signal_type, signal.signal_periodic)
+        return signal2
 
     def filter_impulsive_answer(self, n: int):
         if n == (self.m - 1) / 2:

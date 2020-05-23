@@ -18,13 +18,14 @@ from errors.reconstruction_error import ReconstructionError
 from signal_generators2.sin import SinGenerator
 from signal_operation import SignalOperation
 from cps3 import filter
+from draw.draw_plot import create_arguments
 
 
 def rysuj_sinus():
     gen = SinGenerator()
     signal = gen.generate(1, 0, 1, 0.05, 10000.0)
 
-    filter1 = Filter(100, 2000)
+    filter1 = Filter(500, 50)
 
     filteredSignal = filter1.filter(signal)
 
@@ -47,11 +48,26 @@ def rysuj_sinus():
     # sinc = SincReconstructor(SamplingRate(10000))
     # signal_after_sinc = sinc.convert(sampled_signal, 5)
 
-    bar = plt.figure(1)
-    # draw_bar(signal, plot_type, bar)
-    draw_bar(filteredSignal, plot_type, bar)
-    # draw_bar(signal, plot_type, bar)
-    bar.show()
+    # bar = plt.figure(1)
+    # # draw_bar(signal, plot_type, bar)
+    # draw_bar(filteredSignal, plot_type, bar)
+
+    period = 1 / signal.sampling_frequency
+    arguments = create_arguments(signal.start_time, period, len(signal.samples))
+
+    period2 = 1 / filteredSignal.sampling_frequency
+    arguments2 = create_arguments(filteredSignal.start_time, period, len(filteredSignal.samples))
+
+    # # draw_bar(signal, plot_type, bar)
+    # bar.show()
+
+    plt.plot(arguments2, filteredSignal.samples)
+    plt.plot(arguments, signal.samples)
+
+
+    plt.legend(["Dataset 1", "Dataset 2"])
+
+    plt.show()
 
     # reconstructed_signal = signal_after_sinc
     # errors_classes = ReconstructionError.__subclasses__()
